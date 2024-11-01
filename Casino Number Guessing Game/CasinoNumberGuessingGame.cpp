@@ -6,24 +6,69 @@
 int main() {
     // Clear console and declaration
     system("cls");
-    int rangeMax;
     int option = 0;
     int input;
+    int difficultyOption;
+    int minRange = 0;
+    int maxRange = 0;
+
+    class difficulty {
+        int rangeMin;
+        int rangeMax;
+
+    public:
+        void setValue(int min, int max) {
+            rangeMin = min;
+            rangeMax = max;
+        }
+        void getValue(int one, int two) {
+            one = this->rangeMin;
+            two = this->rangeMax;
+        }
+    };
+    difficulty easy;
+    difficulty medium;
+    difficulty hard;
+    difficulty impossible;
+    easy.setValue(1, 20);
+    medium.setValue(1, 50);
+    hard.setValue(1, 100);
+    impossible.setValue(1, 10000);
 
     // Loop for the game
     do {
-        // Asking for input for the range
-        std::cout << "Till what number do you wanna guess?\n";
-        std::cin >> rangeMax;
+        // Ask for difficulty
+        std::cout << "What difficulty do you want to play?\n1. Easy\n2. Medium\n3. Hard\n4. Impossible\n";
+        std::cin >> difficultyOption;
+        switch (difficultyOption) {
+        case 1:
+            easy.getValue(minRange, maxRange);
+            break;
+        case 2:
+            medium.getValue(minRange, maxRange);
+            break;
+        case 3:
+            hard.getValue(minRange, maxRange);
+            break;
+        case 4:
+            impossible.getValue(minRange, maxRange);
+            break;
+        }
+
+
+
+        //// Asking for input for the range
+        //std::cout << "Till what number do you wanna guess?\n";
+        //std::cin >> rangeMax;
         system("cls");
 
         // Generating the number
 
         std::random_device seed;
         std::default_random_engine e1(seed());
-        std::uniform_int_distribution<int> uniform_dist(1, rangeMax);
+        std::uniform_int_distribution<int> uniform_dist(minRange, maxRange);
         int rightNumber = uniform_dist(e1);
-        std::cout << "Guess the number between 1 and " << rangeMax << "\n";
+        std::cout << "Guess the number between " << minRange << " and " << maxRange << "\n";
         
         // Loop for the guessing
         do {
