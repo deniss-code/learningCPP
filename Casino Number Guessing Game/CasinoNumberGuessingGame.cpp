@@ -13,27 +13,20 @@ int main() {
     int maxRange = 0;
 
     class difficulty {
-        int rangeMin;
-        int rangeMax;
-
     public:
-        void setValue(int min, int max) {
-            rangeMin = min;
-            rangeMax = max;
-        }
-        void getValue(int one, int two) {
-            one = this->rangeMin;
-            two = this->rangeMax;
-        }
+        int rangeMax;
     };
     difficulty easy;
+    easy.rangeMax = 20;
+
     difficulty medium;
+    medium.rangeMax = 50;
+
     difficulty hard;
+    hard.rangeMax = 100;
+
     difficulty impossible;
-    easy.setValue(1, 20);
-    medium.setValue(1, 50);
-    hard.setValue(1, 100);
-    impossible.setValue(1, 10000);
+    impossible.rangeMax = 10000;
 
     // Loop for the game
     do {
@@ -42,16 +35,16 @@ int main() {
         std::cin >> difficultyOption;
         switch (difficultyOption) {
         case 1:
-            easy.getValue(minRange, maxRange);
+            maxRange = easy.rangeMax;
             break;
         case 2:
-            medium.getValue(minRange, maxRange);
+            maxRange = medium.rangeMax;
             break;
         case 3:
-            hard.getValue(minRange, maxRange);
+            maxRange = hard.rangeMax;
             break;
         case 4:
-            impossible.getValue(minRange, maxRange);
+            maxRange = impossible.rangeMax;
             break;
         }
 
@@ -66,9 +59,9 @@ int main() {
 
         std::random_device seed;
         std::default_random_engine e1(seed());
-        std::uniform_int_distribution<int> uniform_dist(minRange, maxRange);
+        std::uniform_int_distribution<int> uniform_dist(1, maxRange);
         int rightNumber = uniform_dist(e1);
-        std::cout << "Guess the number between " << minRange << " and " << maxRange << "\n";
+        std::cout << "Guess the number between 1 and " << maxRange << "\n";
         
         // Loop for the guessing
         do {
