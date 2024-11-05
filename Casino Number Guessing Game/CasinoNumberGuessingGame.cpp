@@ -13,20 +13,32 @@ int main() {
     int maxRange = 0;
 
     class difficulty {
-    public:
         int rangeMax;
+    public:
+        // Setter
+        void setRangeMax(int r) {
+            rangeMax = r;
+        }
+        // Getter
+        int getRange() {
+            return rangeMax;
+        }
     };
     difficulty easy;
-    easy.rangeMax = 20;
+    easy.setRangeMax(20);
+    //easy.rangeMax = 20;
 
     difficulty medium;
-    medium.rangeMax = 50;
+    medium.setRangeMax(50);
+    //medium.rangeMax = 50;
 
     difficulty hard;
-    hard.rangeMax = 100;
+    hard.setRangeMax(100);
+    //hard.rangeMax = 100;
 
     difficulty impossible;
-    impossible.rangeMax = 10000;
+    impossible.setRangeMax(50000);
+    //impossible.rangeMax = 10000;
 
     // Loop for the game
     do {
@@ -35,16 +47,19 @@ int main() {
         std::cin >> difficultyOption;
         switch (difficultyOption) {
         case 1:
-            maxRange = easy.rangeMax;
+            maxRange = easy.getRange();
             break;
         case 2:
-            maxRange = medium.rangeMax;
+            //maxRange = medium.rangeMax;
+            maxRange = medium.getRange();
             break;
         case 3:
-            maxRange = hard.rangeMax;
+            //maxRange = hard.rangeMax;
+            maxRange = hard.getRange();
             break;
         case 4:
-            maxRange = impossible.rangeMax;
+            //maxRange = impossible.rangeMax;
+            maxRange = impossible.getRange();
             break;
         }
 
